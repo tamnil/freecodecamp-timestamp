@@ -24,6 +24,10 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+app.get("/api/timestamp/:timestamp", function (req, res,next) {
+  res.json({greeting: 'hello time API','t': remp});
+  next()
+});
 
 
 // listen for requests :)
