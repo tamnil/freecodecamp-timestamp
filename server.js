@@ -24,17 +24,23 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get("/api/timestamp/:date", function (req, res,next) {
+app.get(["/api/timestamp/:date",'/fdsaf'], function (req, res,next) {
   let inputDate = req.param('date');
 
 
   var date = new Date(inputDate);
-  let strDate = date.toString();
+  
+  console.log(date)
+  
+  let strDate = date.toUTCString();
   //date.toString() === 'Invalid Date'? :
+  let strTime = date.getTime().toString() === 'NaN'? null: date.getTime();
   
-  let ret = {'unix'}
   
-  res.json({greeting: 'hello time API','t': req.param('')});
+  let ret = {'unix': date.getTime()}
+  
+  
+  res.json({time: strTime,'utc': strDate});
   next()
 });
 
