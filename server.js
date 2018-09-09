@@ -24,10 +24,20 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get("/api/timestamp/:timestamp", function (req, res,next) {
-  res.json({greeting: 'hello time API','t': remp});
+app.get("/api/timestamp/:date", function (req, res,next) {
+  let inputDate = req.param('date');
+
+
+  var date = new Date(inputDate);
+  let strDate = date.toString();
+  //date.toString() === 'Invalid Date'? :
+  
+  let ret = {'unix'}
+  
+  res.json({greeting: 'hello time API','t': req.param('')});
   next()
 });
+
 
 
 // listen for requests :)
